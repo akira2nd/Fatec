@@ -1,22 +1,25 @@
-// Inclui o arquivo de cabeÁalho da biblioteca Allegro 5
+/* estrutura do c√≥digo e coment√°rios retirados do site
+http://www.rafaeltoledo.net/tutoriais-allegro-5/
+come√ßando a implementar a partir dessa base. */
+// Inclui o arquivo de cabe√ßalho da biblioteca Allegro 5
 #include <allegro5/allegro.h>
-// Inclui o cabeÁalho do add-on para uso de imagens
+// Inclui o cabe√ßalho do add-on para uso de imagens
 #include <allegro5/allegro_image.h>
 //para utilizar fprintf
 #include <stdio.h>
 
 int main(void)
 {
-    // Vari·vel representando a janela principal
+    // Vari√°vel representando a janela principal
     ALLEGRO_DISPLAY *janela = NULL;
-    // Vari·vel representando a imagem
+    // Vari√°vel representando a imagem
     ALLEGRO_BITMAP *imagem = NULL;
     ALLEGRO_BITMAP *imagem2 = NULL;
     // Inicializamos a biblioteca
     al_init();
-    // Inicializa o add-on para utilizaÁ„o de imagens
+    // Inicializa o add-on para utiliza√ß√£o de imagens
     al_init_image_addon();
-    // Criamos a nossa janela - dimensıes de 640x480 px
+    // Criamos a nossa janela - dimens√µes de 640x480 px
     janela = al_create_display(640, 480);
 
     //crrega imagem
@@ -31,7 +34,7 @@ int main(void)
     // Atualiza a tela
     al_flip_display();
 
-    // Segura a execuÁ„o por 10 segundos
+    // Segura a execu√ß√£o por 10 segundos
     al_rest(10.0);
 
     // Finaliza a janela
