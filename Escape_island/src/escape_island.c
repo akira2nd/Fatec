@@ -20,14 +20,15 @@ int main(void)
     // Inicializa o add-on para utilização de imagens
     al_init_image_addon();
     // Criamos a nossa janela - dimensões de 640x480 px
-    janela = al_create_display(640, 480);
+    janela = al_create_display(640, 360);
 
     //crrega imagem
-    imagem = al_load_bitmap("bigimage.jpg");
-    imagem2 = al_load_bitmap("helicoptero_03.gif");
+    imagem = al_load_bitmap("img/bigimage.jpg");
+    imagem2 = al_load_bitmap("img/helicoptero_03.gif");
     //desenha a imagem na tela
     al_draw_bitmap(imagem,0,0,0);
-    al_draw_bitmap(imagem2,10,0,0);
+    //al_draw_bitmap(imagem2,10,0,0);
+    al_draw_tinted_bitmap(imagem2, al_map_rgba_f(1, 1, 1, 1), 0, 100, 0);
     // Preenchemos a janela de branco
     //****al_clear_to_color(al_map_rgb(255, 255, 255));
 
