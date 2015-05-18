@@ -1,6 +1,44 @@
+#include <allegro5/allegro.h>
+#include <allegro5/allegro_native_dialog.h>
+#include <allegro5/allegro_image.h>
+
+
+int main(void){
+    ALLEGRO_DISPLAY *janela = NULL;
+
+    al_init();
+
+    janela = al_create_display(800, 600);
+
+    al_init_image_addon();
+
+    ALLEGRO_BITMAP *background = al_load_bitmap("img/bg.jpg");
+    ALLEGRO_BITMAP *arvore1 = al_load_bitmap("img/arvore-01.png");
+
+    //al_draw_bitmap(background,0, 0, NULL);
+    al_draw_scaled_bitmap(background,0,0,1920,1080,0,0,al_get_display_width(janela),al_get_display_height(janela),0);
+    //al_draw_bitmap(arvore,0,100,0);
+    //al_draw_scaled_bitmap(arvore1,0,0,al_get_bitmap_height(arvore1),al_get_bitmap_width(arvore1),180,0,al_get_display_width(janela),al_get_display_height(janela),0);
+    al_draw_scaled_bitmap(arvore1,0,0,212,373,325,70,al_get_display_width(janela)/4,al_get_display_height(janela)/4,0);
+    al_flip_display();
+
+    al_rest(10.0);
+
+    al_destroy_bitmap(background);
+    al_destroy_bitmap(arvore1);
+    al_destroy_display(janela);
+
+    return 0;
+}
+
+/* DESTE PONTO PRA CIMA EDITADO NO SERVIÇO ***********
+
+
 /* estrutura do código e comentários retirados do site
 http://www.rafaeltoledo.net/tutoriais-allegro-5/
-começando a implementar a partir dessa base. */
+começando a implementar a partir dessa base. 
+
+
 // Inclui o arquivo de cabeçalho da biblioteca Allegro 5
 #include <allegro5/allegro.h>
 // Inclui o cabeçalho do add-on para uso de imagens
@@ -43,3 +81,4 @@ int main(void)
 
     return 0;
 }
+*/
