@@ -1,34 +1,63 @@
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_native_dialog.h>
 #include <allegro5/allegro_image.h>
+#include <allegro5/allegro_font.h>
+#include <allegro5/allegro_ttf.h>
+#include <stdio.h>
+#include <stdbool.h>
+
+
+
 
 
 int main(void){
     ALLEGRO_DISPLAY *janela = NULL;
 
-    al_init();
+    bool sair = false;
+    double p = 0.666666667;
 
-    janela = al_create_display(800, 600);
+    al_init();
+    al_install_keyboard();
+
+        //teclado
+    ALLEGRO_EVENT_QUEUE *evento_fila = al_create_event_queue();
+
+    if(evento_fila == NULL)
+        return 1;
+
+    al_register_event_source(evento_fila, al_get_keyboard_event_source());
+
+    janela = al_create_display(1280, 720);
 
     al_init_image_addon();
 
     ALLEGRO_BITMAP *background = al_load_bitmap("img/bg.jpg");
-    ALLEGRO_BITMAP *arvore1 = al_load_bitmap("img/arvore-01.png");
+    ALLEGRO_BITMAP *arvoreC = al_load_bitmap("img/arvore-cortar.png");
+    ALLEGRO_BITMAP *menu = al_load_bitmap("img/barra_itens.png");
+
+
 
     //al_draw_bitmap(background,0, 0, NULL);
     al_draw_scaled_bitmap(background,0,0,1920,1080,0,0,al_get_display_width(janela),al_get_display_height(janela),0);
     //al_draw_bitmap(arvore,0,100,0);
     //al_draw_scaled_bitmap(arvore1,0,0,al_get_bitmap_height(arvore1),al_get_bitmap_width(arvore1),180,0,al_get_display_width(janela),al_get_display_height(janela),0);
-    al_draw_scaled_bitmap(arvore1,0,0,212,373,325,70,al_get_display_width(janela)/4,al_get_display_height(janela)/4,0);
+    al_draw_scaled_bitmap(arvoreC,0,0,208,335,620,44,p*212,p*325,0);
+
+    al_draw_scaled_bitmap(menu,0,0,1715,312,45,512,p*1715,p*312,0);
+
+
+
     al_flip_display();
 
-    al_rest(10.0);
+    //al_rest(7.0);
 
     al_destroy_bitmap(background);
-    al_destroy_bitmap(arvore1);
+    al_destroy_bitmap(arvoreC);
+    al_destroy_bitmap(menu);
     al_destroy_display(janela);
 
     return 0;
+
 }
 
 /* DESTE PONTO PRA CIMA EDITADO NO SERVIÇO ***********
