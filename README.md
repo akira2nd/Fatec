@@ -7,4 +7,4 @@ tutorial para instalar o allegro 5
 https://sites.google.com/a/liesenberg.biz/cjogos/home/software/ambiente-code-blocks-allegro-5
 
 ## Screenshot
-<img src="https://raw.githubusercontent.com/akira2nd/Fatec/master/Escape_island/src/img/escape-the-island-01.jpg">
+<img src="https://raw.githubusercontent.com/akira2nd/Fatec/master/Escape_island/src/img/SS/escape-the-island-00.jpg">
