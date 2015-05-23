@@ -277,7 +277,16 @@ while (1){
     //menu largura xMenu = 50 altura yMenu = 512
     //menu largura xMenu = 50 altura yMenu = 670
 
-    al_draw_textf(fonte,al_map_rgb(255, 0, 0), 139, yMenu+51, 0, "%d", x);
+    al_draw_textf(fonte,al_map_rgb(255, 255, 255), 139, yMenu+51, 0, "%d", x);
+    al_draw_textf(fonte,al_map_rgb(255, 255, 255), 247, yMenu+51, 0, "%d", x+1);
+    al_draw_textf(fonte,al_map_rgb(255, 255, 255), 355, yMenu+51, 0, "%d", x+2);
+    al_draw_textf(fonte,al_map_rgb(255, 255, 255), 463, yMenu+51, 0, "%d", x+3);
+    al_draw_textf(fonte,al_map_rgb(255, 255, 255), 571, yMenu+51, 0, "%d", x+4);
+    al_draw_textf(fonte,al_map_rgb(255, 255, 255), 679, yMenu+51, 0, "%d", x+5);
+    al_draw_textf(fonte,al_map_rgb(255, 255, 255), 787, yMenu+51, 0, "%d", x+6);
+    al_draw_textf(fonte,al_map_rgb(255, 255, 255), 895, yMenu+51, 0, "%d", x+7);
+    al_draw_textf(fonte,al_map_rgb(255, 255, 255), 1003, yMenu+51, 0, "%d", x+8);
+    al_draw_textf(fonte,al_map_rgb(255, 255, 255), 1111, yMenu+51, 0, "%d", x+9);
 
     al_rest(1);
     x++;
