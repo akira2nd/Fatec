@@ -18,6 +18,7 @@ const int LARGURA_TELA = 1280;
 const int ALTURA_TELA = 720;
 
 int main(void){
+
     ALLEGRO_DISPLAY *janela = NULL;
 
  //imagens
@@ -53,46 +54,67 @@ int main(void){
     ALLEGRO_BITMAP *mato03 = NULL;
 
 //outros
-    ALLEGRO_EVENT_QUEUE *fila_eventos = NULL;
+    ALLEGRO_EVENT_QUEUE *fila_evento = NULL;
+    ALLEGRO_FONT *fonte = NULL;
     ALLEGRO_TIMER *timer = NULL;
 
-    bool sair = false;
     double p = 0.666666667;
     double i = 0.35;
     double f = 0.45;
 
     if(!al_init()){
         printf("Erro ao iniciar allegro");
-        return 1;
-    }
-/*
-    timer = al_create_timer(1.0 / FPS);
-    if(!timer) {
-        printf("erro ao carregar timer");
         return -1;
     }
-*/
+
+    al_init_font_addon();
+    if(!al_init_ttf_addon()){
+        printf("erro ao carregar fontes");
+        return -1;
+    }
+
     if(!al_install_keyboard()){
         printf("Erro ao iniciar teclado");
-        return 1;
+        return -1;
     }
 
     if(!al_init_image_addon()){
             printf("Erro ao iniciar imagens");
-            return 1;
+            return -1;
     }
 
     janela = al_create_display(LARGURA_TELA, ALTURA_TELA);
     if(!janela){
         printf("Erro ao abrir janela");
-        return 1;
+        return -1;
     }
+
+    al_set_window_title(janela,"Escape The Island - Projeto LP [Denis Campos // Akira]");
+
+    fonte = al_load_font("img/comic.ttf",20,0);
+    if(!fonte){
+        al_destroy_display(janela);
+        printf("Erro ao carregar fonte arquivo.");
+        return -1;
+    }
+
+    if(!al_install_mouse()){
+        printf("Erro ao iniciar o mouse.\n");
+        return -1;
+    }
+
+    if (!al_set_system_mouse_cursor(janela, ALLEGRO_SYSTEM_MOUSE_CURSOR_DEFAULT)){
+        printf("Erro ao iniciar ponteiro do mouse(seta).\n");
+        al_destroy_display(janela);
+        return -1;
+    }
+
 
     background = al_load_bitmap("img/bg.jpg");
     if(!background){
         printf("Erro ao iniciar imagem de fundo");
         al_destroy_display(janela);
-        return 1;
+        return -1;
     }
 
     arvoreC = al_load_bitmap("img/arvore-cortar.png");
@@ -183,22 +205,36 @@ int main(void){
     erro_imagem(peixe,"img/mato-03.png",janela);
 
 
-//while (!sair){
-    ALLEGRO_EVENT evento;
+    fila_evento = al_create_event_queue();
+    if(!fila_evento){
+        printf("Erro ao carregar fila_evento");
+        al_destroy_display(janela);
+        return -1;
+    }
 
-    //al_draw_bitmap(background,0, 0, NULL);
-    //printf("%lf",al_get_bitmap_width(arvoreC));
+    al_register_event_source(fila_evento, al_get_display_event_source(janela));
+
+
+int yMenu = 512;
+int x = 0;
+
+while (1){
+
+    ALLEGRO_EVENT evento;
+    ALLEGRO_TIMEOUT timeout;
+    al_init_timeout(&timeout, 0.06);
+
+    bool get_event = al_wait_for_event_until(fila_evento, &evento, &timeout);
+
+    if(get_event && evento.type == ALLEGRO_EVENT_DISPLAY_CLOSE){
+        break;
+    }
 
     al_draw_scaled_bitmap(background,0,0,al_get_bitmap_width(background),al_get_bitmap_height(background),0,0,al_get_display_width(janela),al_get_display_height(janela),0);
 
     al_draw_scaled_bitmap(arvoreC,0,0,al_get_bitmap_width(arvoreC),al_get_bitmap_height(arvoreC),620,44,p*al_get_bitmap_width(arvoreC),p*al_get_bitmap_height(arvoreC),0);
 
-
-    al_draw_scaled_bitmap(menu,0,0,al_get_bitmap_width(menu),al_get_bitmap_height(menu),50,512,p*al_get_bitmap_width(menu),p*al_get_bitmap_height(menu),0);
-
-
     al_draw_scaled_bitmap(arvore02,0,0,al_get_bitmap_width(arvore02),al_get_bitmap_height(arvore02),670,280,p*al_get_bitmap_width(arvore02),p*al_get_bitmap_height(arvore02),0);
-
 
     al_draw_scaled_bitmap(fogueira,0,0,al_get_bitmap_width(fogueira),al_get_bitmap_height(fogueira),980,100,f*al_get_bitmap_width(fogueira),f*al_get_bitmap_height(fogueira),0);
     al_draw_scaled_bitmap(fogueiraapagada,0,0,al_get_bitmap_width(fogueiraapagada),al_get_bitmap_height(fogueiraapagada),140,140,p*al_get_bitmap_width(fogueiraapagada),p*al_get_bitmap_height(fogueiraapagada),0);
@@ -217,14 +253,7 @@ int main(void){
     al_draw_scaled_bitmap(coqueiro08,0,0,al_get_bitmap_width(coqueiro08),al_get_bitmap_height(coqueiro08),960,-30,p*al_get_bitmap_width(coqueiro08),p*al_get_bitmap_height(coqueiro08),0);
 
 
-
-
-
-
-
     al_draw_scaled_bitmap(espinha,0,0,al_get_bitmap_width(espinha),al_get_bitmap_height(espinha),120,120,p*al_get_bitmap_width(espinha),p*al_get_bitmap_height(espinha),0);
-
-
 
 
     al_draw_scaled_bitmap(galhocomum,0,0,al_get_bitmap_width(galhocomum),al_get_bitmap_height(galhocomum),150,150,p*al_get_bitmap_width(galhocomum),p*al_get_bitmap_height(galhocomum),0);
@@ -237,43 +266,24 @@ int main(void){
     al_draw_scaled_bitmap(pedracortante,0,0,al_get_bitmap_width(pedracortante),al_get_bitmap_height(pedracortante),245,455,i*al_get_bitmap_width(pedracortante),i*al_get_bitmap_height(pedracortante),0);
 
 
-
     //al_draw_scaled_bitmap(peixe,0,0,al_get_bitmap_width(peixe),al_get_bitmap_height(peixe),230,230,p*al_get_bitmap_width(peixe),p*al_get_bitmap_height(peixe),0);
     //al_draw_scaled_bitmap(mapa,0,0,al_get_bitmap_width(mapa),al_get_bitmap_height(mapa),210,210,p*al_get_bitmap_width(mapa),p*al_get_bitmap_height(mapa),0);
 
 
     al_draw_scaled_bitmap(coco,0,0,al_get_bitmap_width(coco),al_get_bitmap_height(coco),195,600,100,100,0);
 
+    al_draw_scaled_bitmap(menu,0,0,al_get_bitmap_width(menu),al_get_bitmap_height(menu),65,yMenu,p*al_get_bitmap_width(menu),p*al_get_bitmap_height(menu),0);
+    //if(yMenu <512 && yMenu >670)
+    //menu largura xMenu = 50 altura yMenu = 512
+    //menu largura xMenu = 50 altura yMenu = 670
+
+    al_draw_textf(fonte,al_map_rgb(255, 0, 0), 139, yMenu+51, 0, "%d", x);
+
+    al_rest(1);
+    x++;
     al_flip_display();
+}
 
-    //al_wait_for_event(fila_eventos, &evento);
-
-    //if(evento.type == ALLEGRO_EVENT_DISPLAY_CLOSE){
-        //sair = true;
-
-/*
-    //teclado
-    ; = al_create_event_queue();
-<<<<<<< HEAD
-
-    if(evento_fila == NULL)
-        return 1;
-
-    al_register_event_source(evento_fila, al_get_keyboard_event_source());
-
-*/
-
-    al_rest(15.0);
-
-/*
-    if(evento_fila == NULL)
-        return 1;
-
-    al_register_event_source(evento_fila, al_get_keyboard_event_source());
-
-*/
-
-//}
     al_destroy_bitmap(background);
     al_destroy_bitmap(arvoreC);
     al_destroy_bitmap(coco);
@@ -303,6 +313,8 @@ int main(void){
     al_destroy_bitmap(pedracortante);
     al_destroy_bitmap(peixe);
 
+    al_destroy_event_queue(fila_evento);
+    al_destroy_font(fonte);
     al_destroy_display(janela);
 
     return 0;
