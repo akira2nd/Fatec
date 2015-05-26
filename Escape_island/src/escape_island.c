@@ -217,6 +217,7 @@ int main(void){
 
 int yMenu = 512;
 int x = 0;
+bool item = true;
 
 while (1){
 
@@ -280,17 +281,33 @@ while (1){
     al_draw_textf(fonte,al_map_rgb(255, 255, 255), 139, yMenu+51, 0, "%d", x);
     al_draw_textf(fonte,al_map_rgb(255, 255, 255), 247, yMenu+51, 0, "%d", x+1);
     al_draw_textf(fonte,al_map_rgb(255, 255, 255), 355, yMenu+51, 0, "%d", x+2);
-    al_draw_textf(fonte,al_map_rgb(255, 255, 255), 463, yMenu+51, 0, "%d", x+3);
-    al_draw_textf(fonte,al_map_rgb(255, 255, 255), 571, yMenu+51, 0, "%d", x+4);
-    al_draw_textf(fonte,al_map_rgb(255, 255, 255), 679, yMenu+51, 0, "%d", x+5);
-    al_draw_textf(fonte,al_map_rgb(255, 255, 255), 787, yMenu+51, 0, "%d", x+6);
-    al_draw_textf(fonte,al_map_rgb(255, 255, 255), 895, yMenu+51, 0, "%d", x+7);
-    al_draw_textf(fonte,al_map_rgb(255, 255, 255), 1003, yMenu+51, 0, "%d", x+8);
-    al_draw_textf(fonte,al_map_rgb(255, 255, 255), 1111, yMenu+51, 0, "%d", x+9);
+    al_draw_textf(fonte,al_map_rgb(255, 255, 255), 466, yMenu+51, 0, "%d", x+3);
+    al_draw_textf(fonte,al_map_rgb(255, 255, 255), 574, yMenu+51, 0, "%d", x+4);
+    al_draw_textf(fonte,al_map_rgb(255, 255, 255), 682, yMenu+51, 0, "%d", x+5);
+    al_draw_textf(fonte,al_map_rgb(255, 255, 255), 790, yMenu+51, 0, "%d", x+6);
+    al_draw_textf(fonte,al_map_rgb(255, 255, 255), 898, yMenu+51, 0, "%d", x+7);
+    al_draw_textf(fonte,al_map_rgb(255, 255, 255), 1006, yMenu+51, 0, "%d", x+8);
+    al_draw_textf(fonte,al_map_rgb(255, 255, 255), 1114, yMenu+51, 0, "%d", x+9);
 
-    al_rest(1);
-    x++;
+    //al_rest(0.005);
+    //x++;
     al_flip_display();
+
+//Criar evento do mouse para alterar **item** true e false
+    if(item && yMenu <= 670){
+        yMenu += 4;
+    }else{
+        item = false;
+    }
+
+    if(!item && yMenu >= 520){
+        yMenu -= 4;
+    }else{
+        item = true;
+    }
+
+
+
 }
 
     al_destroy_bitmap(background);
