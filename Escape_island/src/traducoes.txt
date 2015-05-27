@@ -1,0 +1,14 @@
+mapa = map
+fogueira = bonfire / campfire ***
+machado = axe
+pedra = stone
+coco = coconut
+peixe =	fish
+galho =	branch
+galho seco = dead branch ***
+lança = spear
+espinha = fishbone
+baú = trunk
+
+
+** confirmar
