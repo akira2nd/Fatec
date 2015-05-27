@@ -91,7 +91,7 @@ int main(void){
 
     al_set_window_title(janela,"Escape The Island - Projeto LP [Denis Campos // Akira]");
 
-    fonte = al_load_font("img/comic.ttf",20,0);
+    fonte = al_load_font("img/comic.ttf",16,0);
     if(!fonte){
         al_destroy_display(janela);
         printf("Erro ao carregar fonte arquivo.");
@@ -116,6 +116,14 @@ int main(void){
         al_destroy_display(janela);
         return -1;
     }
+
+    if (!al_set_system_mouse_cursor(janela, ALLEGRO_SYSTEM_MOUSE_CURSOR_DEFAULT))
+    {
+        printf("Erro ao iniciar mouse ponteiro");
+        al_destroy_display(janela);
+        return -1;
+    }
+
 
     arvoreC = al_load_bitmap("img/arvore-cortar.png");
     erro_imagem(arvoreC, "img/arvore-cortar.png",janela);
@@ -215,7 +223,7 @@ int main(void){
     al_register_event_source(fila_evento, al_get_display_event_source(janela));
 
 
-int yMenu = 512;
+int yMenu = 530;
 int x = 0;
 bool item = true;
 
@@ -274,37 +282,66 @@ while (1){
     al_draw_scaled_bitmap(coco,0,0,al_get_bitmap_width(coco),al_get_bitmap_height(coco),195,600,100,100,0);
 
     al_draw_scaled_bitmap(menu,0,0,al_get_bitmap_width(menu),al_get_bitmap_height(menu),65,yMenu,p*al_get_bitmap_width(menu),p*al_get_bitmap_height(menu),0);
+
+
     //if(yMenu <512 && yMenu >670)
     //menu largura xMenu = 50 altura yMenu = 512
     //menu largura xMenu = 50 altura yMenu = 670
 
-    al_draw_textf(fonte,al_map_rgb(255, 255, 255), 139, yMenu+51, 0, "%d", x);
-    al_draw_textf(fonte,al_map_rgb(255, 255, 255), 247, yMenu+51, 0, "%d", x+1);
-    al_draw_textf(fonte,al_map_rgb(255, 255, 255), 355, yMenu+51, 0, "%d", x+2);
-    al_draw_textf(fonte,al_map_rgb(255, 255, 255), 466, yMenu+51, 0, "%d", x+3);
-    al_draw_textf(fonte,al_map_rgb(255, 255, 255), 574, yMenu+51, 0, "%d", x+4);
-    al_draw_textf(fonte,al_map_rgb(255, 255, 255), 682, yMenu+51, 0, "%d", x+5);
-    al_draw_textf(fonte,al_map_rgb(255, 255, 255), 790, yMenu+51, 0, "%d", x+6);
-    al_draw_textf(fonte,al_map_rgb(255, 255, 255), 898, yMenu+51, 0, "%d", x+7);
-    al_draw_textf(fonte,al_map_rgb(255, 255, 255), 1006, yMenu+51, 0, "%d", x+8);
-    al_draw_textf(fonte,al_map_rgb(255, 255, 255), 1114, yMenu+51, 0, "%d", x+9);
+    al_draw_textf(fonte,al_map_rgb(255, 255, 255), 139, yMenu+51, ALLEGRO_ALIGN_LEFT , "%d", x);
+    al_draw_textf(fonte,al_map_rgb(255, 255, 255), 247, yMenu+51, ALLEGRO_ALIGN_LEFT  , "%d", x+1);
+    al_draw_textf(fonte,al_map_rgb(255, 255, 255), 355, yMenu+51, ALLEGRO_ALIGN_LEFT  , "%d", x+2);
+    al_draw_textf(fonte,al_map_rgb(255, 255, 255), 466, yMenu+51, ALLEGRO_ALIGN_LEFT  , "%d", x+3);
+    al_draw_textf(fonte,al_map_rgb(255, 255, 255), 574, yMenu+51, ALLEGRO_ALIGN_LEFT  , "%d", x+4);
+    al_draw_textf(fonte,al_map_rgb(255, 255, 255), 682, yMenu+51, ALLEGRO_ALIGN_LEFT  , "%d", x+5);
+    al_draw_textf(fonte,al_map_rgb(255, 255, 255), 790, yMenu+51,ALLEGRO_ALIGN_LEFT , "%d", x+6);
+    al_draw_textf(fonte,al_map_rgb(255, 255, 255), 898, yMenu+51, ALLEGRO_ALIGN_LEFT  , "%d", x+7);
+    al_draw_textf(fonte,al_map_rgb(255, 255, 255), 1006, yMenu+51, ALLEGRO_ALIGN_LEFT  , "%d", x+8);
+    al_draw_textf(fonte,al_map_rgb(255, 255, 255), 1114, yMenu+51, ALLEGRO_ALIGN_LEFT  , "%d", x+9);
 
     //al_rest(0.005);
     //x++;
     al_flip_display();
 
+
+
 //Criar evento do mouse para alterar **item** true e false
     if(item && yMenu <= 670){
-        yMenu += 4;
+        yMenu = 670;
+    /*
     }else{
         item = false;
+    */
     }
 
-    if(!item && yMenu >= 520){
-        yMenu -= 4;
+//545,675 --- 725,720
+
+
+    if(!item && yMenu >= 530){
+        yMenu = 530;
+    /*
     }else{
         item = true;
+    */
     }
+//545, 535 == 725,585
+
+
+    ALLEGRO_MOUSE_STATE state;
+
+    al_get_mouse_state(&state);
+    if (state.buttons & 1) {
+    //while(al_mouse_button_down(state.buttons , 1)){
+        /* Primary (e.g. left) mouse button is held. */
+        if(state.x >= 545 && state.x <= 725 && state.y >= 675 && state.y <= 720){
+            item = false;
+        }
+        if(state.x >= 545 && state.x <= 725 && state.y >= 535 && state.y <= 585){
+            item = true;
+        }
+        printf("Mouse position: (%d, %d)\n", state.x, state.y);
+    }
+
 
 
 
