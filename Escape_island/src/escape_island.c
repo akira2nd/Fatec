@@ -91,7 +91,7 @@ int main(void){
 
     al_set_window_title(janela,"Escape The Island - Projeto LP [Denis Campos // Akira]");
 
-    fonte = al_load_font("img/comic.ttf",16,0);
+    fonte = al_load_font("font-bombardier/BOMBARD_.ttf",16,0);
     if(!fonte){
         al_destroy_display(janela);
         printf("Erro ao carregar fonte arquivo.");
@@ -223,9 +223,21 @@ int main(void){
     al_register_event_source(fila_evento, al_get_display_event_source(janela));
 
 
-int yMenu = 530;
+
+
+
+
+
+
+int yMenu = 670;
 int x = 0;
-bool item = true;
+bool menuBar = true;
+
+
+
+
+
+
 
 while (1){
 
@@ -288,25 +300,26 @@ while (1){
     //menu largura xMenu = 50 altura yMenu = 512
     //menu largura xMenu = 50 altura yMenu = 670
 
-    al_draw_textf(fonte,al_map_rgb(255, 255, 255), 139, yMenu+51, ALLEGRO_ALIGN_LEFT , "%d", x);
-    al_draw_textf(fonte,al_map_rgb(255, 255, 255), 247, yMenu+51, ALLEGRO_ALIGN_LEFT  , "%d", x+1);
-    al_draw_textf(fonte,al_map_rgb(255, 255, 255), 355, yMenu+51, ALLEGRO_ALIGN_LEFT  , "%d", x+2);
-    al_draw_textf(fonte,al_map_rgb(255, 255, 255), 466, yMenu+51, ALLEGRO_ALIGN_LEFT  , "%d", x+3);
-    al_draw_textf(fonte,al_map_rgb(255, 255, 255), 574, yMenu+51, ALLEGRO_ALIGN_LEFT  , "%d", x+4);
-    al_draw_textf(fonte,al_map_rgb(255, 255, 255), 682, yMenu+51, ALLEGRO_ALIGN_LEFT  , "%d", x+5);
-    al_draw_textf(fonte,al_map_rgb(255, 255, 255), 790, yMenu+51,ALLEGRO_ALIGN_LEFT , "%d", x+6);
-    al_draw_textf(fonte,al_map_rgb(255, 255, 255), 898, yMenu+51, ALLEGRO_ALIGN_LEFT  , "%d", x+7);
-    al_draw_textf(fonte,al_map_rgb(255, 255, 255), 1006, yMenu+51, ALLEGRO_ALIGN_LEFT  , "%d", x+8);
-    al_draw_textf(fonte,al_map_rgb(255, 255, 255), 1114, yMenu+51, ALLEGRO_ALIGN_LEFT  , "%d", x+9);
+    al_draw_textf(fonte,al_map_rgb(255, 255, 255), 143, yMenu+55, ALLEGRO_ALIGN_CENTRE  , "%d", x);
+    al_draw_textf(fonte,al_map_rgb(255, 255, 255), 253, yMenu+55, ALLEGRO_ALIGN_CENTRE   , "%d", x+1);
+    al_draw_textf(fonte,al_map_rgb(255, 255, 255), 363, yMenu+55, ALLEGRO_ALIGN_CENTRE   , "%d", x+2);
+    al_draw_textf(fonte,al_map_rgb(255, 255, 255), 473, yMenu+55, ALLEGRO_ALIGN_CENTRE   , "%d", x+3);
+    al_draw_textf(fonte,al_map_rgb(255, 255, 255), 581, yMenu+55, ALLEGRO_ALIGN_CENTRE   , "%d", x+4);
+    al_draw_textf(fonte,al_map_rgb(255, 255, 255), 690, yMenu+55, ALLEGRO_ALIGN_CENTRE   , "%d", x+5);
+
+    al_draw_textf(fonte,al_map_rgb(255, 255, 255), 799, yMenu+55,ALLEGRO_ALIGN_CENTRE  , "%d", x+6);
+    al_draw_textf(fonte,al_map_rgb(255, 255, 255), 909, yMenu+55, ALLEGRO_ALIGN_CENTRE   , "%d", x+7);
+    al_draw_textf(fonte,al_map_rgb(255, 255, 255), 1018, yMenu+55, ALLEGRO_ALIGN_CENTRE   , "%d", x+8);
+    al_draw_textf(fonte,al_map_rgb(255, 255, 255), 1127, yMenu+55, ALLEGRO_ALIGN_CENTRE   , "%d", x+9);
 
     //al_rest(0.005);
-    //x++;
+    x++;
     al_flip_display();
 
 
 
 //Criar evento do mouse para alterar **item** true e false
-    if(item && yMenu <= 670){
+    if(menuBar && yMenu <= 670){
         yMenu = 670;
     /*
     }else{
@@ -317,7 +330,7 @@ while (1){
 //545,675 --- 725,720
 
 
-    if(!item && yMenu >= 530){
+    if(!menuBar && yMenu >= 530){
         yMenu = 530;
     /*
     }else{
@@ -330,22 +343,25 @@ while (1){
     ALLEGRO_MOUSE_STATE state;
 
     al_get_mouse_state(&state);
+
     if (state.buttons & 1) {
-    //while(al_mouse_button_down(state.buttons , 1)){
+    //while(al_mouse_button_down(&state , 1)){
+
         /* Primary (e.g. left) mouse button is held. */
+
         if(state.x >= 545 && state.x <= 725 && state.y >= 675 && state.y <= 720){
-            item = false;
+            menuBar = false;
         }
         if(state.x >= 545 && state.x <= 725 && state.y >= 535 && state.y <= 585){
-            item = true;
+            menuBar = true;
+
         }
         printf("Mouse position: (%d, %d)\n", state.x, state.y);
     }
 
 
 
-
-}
+    }
 
     al_destroy_bitmap(background);
     al_destroy_bitmap(arvoreC);
@@ -382,6 +398,7 @@ while (1){
 
     return 0;
 }
+
 
 /* DESTE PONTO PRA CIMA EDITADO NO SERVIÇO ***********
 
