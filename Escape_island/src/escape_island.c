@@ -52,6 +52,8 @@ int main(void){
     ALLEGRO_BITMAP *mato01 = NULL;
     ALLEGRO_BITMAP *mato02 = NULL;
     ALLEGRO_BITMAP *mato03 = NULL;
+    ALLEGRO_BITMAP *bauA = NULL;
+    ALLEGRO_BITMAP *bauF = NULL;
 
 //outros
     ALLEGRO_EVENT_QUEUE *fila_evento = NULL;
@@ -212,6 +214,13 @@ int main(void){
     mato03 = al_load_bitmap("img/mato-03.png");
     erro_imagem(peixe,"img/mato-03.png",janela);
 
+    bauF = al_load_bitmap("img/bau-fechado.png");
+    erro_imagem(bauF,"img/bau-fechado.png",janela);
+
+    bauA = al_load_bitmap("img/bau.png");
+    erro_imagem(bauA,"img/bau.png",janela);
+
+
 
     fila_evento = al_create_event_queue();
     if(!fila_evento){
@@ -253,14 +262,17 @@ while (1){
 
     al_draw_scaled_bitmap(background,0,0,al_get_bitmap_width(background),al_get_bitmap_height(background),0,0,al_get_display_width(janela),al_get_display_height(janela),0);
 
-    al_draw_scaled_bitmap(arvoreC,0,0,al_get_bitmap_width(arvoreC),al_get_bitmap_height(arvoreC),620,44,p*al_get_bitmap_width(arvoreC),p*al_get_bitmap_height(arvoreC),0);
+    //al_draw_scaled_bitmap(arvoreC,0,0,al_get_bitmap_width(arvoreC),al_get_bitmap_height(arvoreC),620,44,p*al_get_bitmap_width(arvoreC),p*al_get_bitmap_height(arvoreC),0);
+
+    al_draw_scaled_bitmap(bauF,0,0,al_get_bitmap_width(bauF),al_get_bitmap_height(bauF),275,120,al_get_bitmap_width(bauF),al_get_bitmap_height(bauF),0);
+
 
     al_draw_scaled_bitmap(arvore02,0,0,al_get_bitmap_width(arvore02),al_get_bitmap_height(arvore02),670,280,p*al_get_bitmap_width(arvore02),p*al_get_bitmap_height(arvore02),0);
 
-    al_draw_scaled_bitmap(fogueira,0,0,al_get_bitmap_width(fogueira),al_get_bitmap_height(fogueira),980,100,f*al_get_bitmap_width(fogueira),f*al_get_bitmap_height(fogueira),0);
-    al_draw_scaled_bitmap(fogueiraapagada,0,0,al_get_bitmap_width(fogueiraapagada),al_get_bitmap_height(fogueiraapagada),140,140,p*al_get_bitmap_width(fogueiraapagada),p*al_get_bitmap_height(fogueiraapagada),0);
+    //al_draw_scaled_bitmap(fogueira,0,0,al_get_bitmap_width(fogueira),al_get_bitmap_height(fogueira),980,100,f*al_get_bitmap_width(fogueira),f*al_get_bitmap_height(fogueira),0);
+    //al_draw_scaled_bitmap(fogueiraapagada,0,0,al_get_bitmap_width(fogueiraapagada),al_get_bitmap_height(fogueiraapagada),140,140,p*al_get_bitmap_width(fogueiraapagada),p*al_get_bitmap_height(fogueiraapagada),0);
 
-    al_draw_scaled_bitmap(arvoretombada,0,0,al_get_bitmap_width(arvoretombada),al_get_bitmap_height(arvoretombada),675,135,p*al_get_bitmap_width(arvoretombada),p*al_get_bitmap_height(arvoretombada),0);
+    al_draw_scaled_bitmap(arvoretombada,0,0,al_get_bitmap_width(arvoretombada),al_get_bitmap_height(arvoretombada),670,110,p*al_get_bitmap_width(arvoretombada),p*al_get_bitmap_height(arvoretombada),0);
     al_draw_scaled_bitmap(coqueiro01,0,0,al_get_bitmap_width(coqueiro01),al_get_bitmap_height(coqueiro01),75,0,p*al_get_bitmap_width(coqueiro01),p*al_get_bitmap_height(coqueiro01),0);
     al_draw_scaled_bitmap(coqueiro02,0,0,al_get_bitmap_width(coqueiro02),al_get_bitmap_height(coqueiro02),300,-95,p*al_get_bitmap_width(coqueiro02),p*al_get_bitmap_height(coqueiro02),0);
 
@@ -270,21 +282,22 @@ while (1){
     al_draw_scaled_bitmap(coqueiro04,0,0,al_get_bitmap_width(coqueiro04),al_get_bitmap_height(coqueiro04),475,-115,p*al_get_bitmap_width(coqueiro04),p*al_get_bitmap_height(coqueiro04),0);
     al_draw_scaled_bitmap(coqueiro05,0,0,al_get_bitmap_width(coqueiro05),al_get_bitmap_height(coqueiro05),475,15,p*al_get_bitmap_width(coqueiro05),p*al_get_bitmap_height(coqueiro05),0);
     al_draw_scaled_bitmap(coqueiro06,0,0,al_get_bitmap_width(coqueiro06),al_get_bitmap_height(coqueiro06),850,300,p*al_get_bitmap_width(coqueiro06),p*al_get_bitmap_height(coqueiro06),0);
-    al_draw_scaled_bitmap(coqueiro07,0,0,al_get_bitmap_width(coqueiro07),al_get_bitmap_height(coqueiro07),850,-110,p*al_get_bitmap_width(coqueiro07),p*al_get_bitmap_height(coqueiro07),0);
+    al_draw_scaled_bitmap(coqueiro07,0,0,al_get_bitmap_width(coqueiro07),al_get_bitmap_height(coqueiro07),820,-110,p*al_get_bitmap_width(coqueiro07),p*al_get_bitmap_height(coqueiro07),0);
     al_draw_scaled_bitmap(coqueiro08,0,0,al_get_bitmap_width(coqueiro08),al_get_bitmap_height(coqueiro08),960,-30,p*al_get_bitmap_width(coqueiro08),p*al_get_bitmap_height(coqueiro08),0);
 
 
-    al_draw_scaled_bitmap(espinha,0,0,al_get_bitmap_width(espinha),al_get_bitmap_height(espinha),120,120,p*al_get_bitmap_width(espinha),p*al_get_bitmap_height(espinha),0);
+    //al_draw_scaled_bitmap(espinha,0,0,al_get_bitmap_width(espinha),al_get_bitmap_height(espinha),120,120,p*al_get_bitmap_width(espinha),p*al_get_bitmap_height(espinha),0);
 
 
-    al_draw_scaled_bitmap(galhocomum,0,0,al_get_bitmap_width(galhocomum),al_get_bitmap_height(galhocomum),150,150,p*al_get_bitmap_width(galhocomum),p*al_get_bitmap_height(galhocomum),0);
-    al_draw_scaled_bitmap(galhofino,0,0,al_get_bitmap_width(galhofino),al_get_bitmap_height(galhofino),160,160,p*al_get_bitmap_width(galhofino),p*al_get_bitmap_height(galhofino),0);
-    al_draw_scaled_bitmap(galhorigido,0,0,al_get_bitmap_width(galhorigido),al_get_bitmap_height(galhorigido),170,170,p*al_get_bitmap_width(galhorigido),p*al_get_bitmap_height(galhorigido),0);
-    al_draw_scaled_bitmap(galhoseco,0,0,al_get_bitmap_width(galhoseco),al_get_bitmap_height(galhoseco),180,180,p*al_get_bitmap_width(galhoseco),p*al_get_bitmap_height(galhoseco),0);
-    al_draw_scaled_bitmap(lanca,0,0,al_get_bitmap_width(lanca),al_get_bitmap_height(lanca),190,190,p*al_get_bitmap_width(lanca),p*al_get_bitmap_height(lanca),0);
-    al_draw_scaled_bitmap(machado,0,0,al_get_bitmap_width(machado),al_get_bitmap_height(machado),200,200,p*al_get_bitmap_width(machado),p*al_get_bitmap_height(machado),0);
+    //al_draw_scaled_bitmap(galhocomum,0,0,al_get_bitmap_width(galhocomum),al_get_bitmap_height(galhocomum),150,150,p*al_get_bitmap_width(galhocomum),p*al_get_bitmap_height(galhocomum),0);
+    //al_draw_scaled_bitmap(galhofino,0,0,al_get_bitmap_width(galhofino),al_get_bitmap_height(galhofino),160,160,p*al_get_bitmap_width(galhofino),p*al_get_bitmap_height(galhofino),0);
+    //al_draw_scaled_bitmap(galhorigido,0,0,al_get_bitmap_width(galhorigido),al_get_bitmap_height(galhorigido),170,170,p*al_get_bitmap_width(galhorigido),p*al_get_bitmap_height(galhorigido),0);
+    //al_draw_scaled_bitmap(galhoseco,0,0,al_get_bitmap_width(galhoseco),al_get_bitmap_height(galhoseco),180,180,p*al_get_bitmap_width(galhoseco),p*al_get_bitmap_height(galhoseco),0);
+    //al_draw_scaled_bitmap(lanca,0,0,al_get_bitmap_width(lanca),al_get_bitmap_height(lanca),190,190,p*al_get_bitmap_width(lanca),p*al_get_bitmap_height(lanca),0);
+    //al_draw_scaled_bitmap(machado,0,0,al_get_bitmap_width(machado),al_get_bitmap_height(machado),200,200,p*al_get_bitmap_width(machado),p*al_get_bitmap_height(machado),0);
 
-    al_draw_scaled_bitmap(pedracortante,0,0,al_get_bitmap_width(pedracortante),al_get_bitmap_height(pedracortante),245,455,i*al_get_bitmap_width(pedracortante),i*al_get_bitmap_height(pedracortante),0);
+    al_draw_scaled_bitmap(pedracortante,0,0,al_get_bitmap_width(pedracortante),al_get_bitmap_height(pedracortante),250,455,i*al_get_bitmap_width(pedracortante),i*al_get_bitmap_height(pedracortante),0);
+    al_draw_scaled_bitmap(mato02,0,0,al_get_bitmap_width(mato02),al_get_bitmap_height(mato02),245,455,al_get_bitmap_width(mato02),al_get_bitmap_height(mato02),0);
 
 
     //al_draw_scaled_bitmap(peixe,0,0,al_get_bitmap_width(peixe),al_get_bitmap_height(peixe),230,230,p*al_get_bitmap_width(peixe),p*al_get_bitmap_height(peixe),0);
@@ -313,7 +326,7 @@ while (1){
     al_draw_textf(fonte,al_map_rgb(255, 255, 255), 1127, yMenu+55, ALLEGRO_ALIGN_CENTRE   , "%d", x+9);
 
     //al_rest(0.005);
-    x++;
+    //x++;
     al_flip_display();
 
 
