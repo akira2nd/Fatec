@@ -286,27 +286,31 @@ while (1){
     al_draw_scaled_bitmap(coqueiro08,0,0,al_get_bitmap_width(coqueiro08),al_get_bitmap_height(coqueiro08),960,-30,p*al_get_bitmap_width(coqueiro08),p*al_get_bitmap_height(coqueiro08),0);
 
 
-    //al_draw_scaled_bitmap(espinha,0,0,al_get_bitmap_width(espinha),al_get_bitmap_height(espinha),120,120,p*al_get_bitmap_width(espinha),p*al_get_bitmap_height(espinha),0);
 
-
-    //al_draw_scaled_bitmap(galhocomum,0,0,al_get_bitmap_width(galhocomum),al_get_bitmap_height(galhocomum),150,150,p*al_get_bitmap_width(galhocomum),p*al_get_bitmap_height(galhocomum),0);
-    //al_draw_scaled_bitmap(galhofino,0,0,al_get_bitmap_width(galhofino),al_get_bitmap_height(galhofino),160,160,p*al_get_bitmap_width(galhofino),p*al_get_bitmap_height(galhofino),0);
-    //al_draw_scaled_bitmap(galhorigido,0,0,al_get_bitmap_width(galhorigido),al_get_bitmap_height(galhorigido),170,170,p*al_get_bitmap_width(galhorigido),p*al_get_bitmap_height(galhorigido),0);
-    //al_draw_scaled_bitmap(galhoseco,0,0,al_get_bitmap_width(galhoseco),al_get_bitmap_height(galhoseco),180,180,p*al_get_bitmap_width(galhoseco),p*al_get_bitmap_height(galhoseco),0);
-    //al_draw_scaled_bitmap(lanca,0,0,al_get_bitmap_width(lanca),al_get_bitmap_height(lanca),190,190,p*al_get_bitmap_width(lanca),p*al_get_bitmap_height(lanca),0);
-    //al_draw_scaled_bitmap(machado,0,0,al_get_bitmap_width(machado),al_get_bitmap_height(machado),200,200,p*al_get_bitmap_width(machado),p*al_get_bitmap_height(machado),0);
 
     al_draw_scaled_bitmap(pedracortante,0,0,al_get_bitmap_width(pedracortante),al_get_bitmap_height(pedracortante),250,455,i*al_get_bitmap_width(pedracortante),i*al_get_bitmap_height(pedracortante),0);
     al_draw_scaled_bitmap(mato02,0,0,al_get_bitmap_width(mato02),al_get_bitmap_height(mato02),245,455,al_get_bitmap_width(mato02),al_get_bitmap_height(mato02),0);
 
 
-    //al_draw_scaled_bitmap(peixe,0,0,al_get_bitmap_width(peixe),al_get_bitmap_height(peixe),230,230,p*al_get_bitmap_width(peixe),p*al_get_bitmap_height(peixe),0);
-    //al_draw_scaled_bitmap(mapa,0,0,al_get_bitmap_width(mapa),al_get_bitmap_height(mapa),210,210,p*al_get_bitmap_width(mapa),p*al_get_bitmap_height(mapa),0);
 
-
-    al_draw_scaled_bitmap(coco,0,0,al_get_bitmap_width(coco),al_get_bitmap_height(coco),195,600,100,100,0);
 
     al_draw_scaled_bitmap(menu,0,0,al_get_bitmap_width(menu),al_get_bitmap_height(menu),65,yMenu,p*al_get_bitmap_width(menu),p*al_get_bitmap_height(menu),0);
+
+
+    al_draw_scaled_bitmap(peixe,0,0,al_get_bitmap_width(peixe),al_get_bitmap_height(peixe),1080,yMenu+80,p*al_get_bitmap_width(peixe),p*al_get_bitmap_height(peixe),0);
+
+    al_draw_scaled_bitmap(peixe,0,0,al_get_bitmap_width(peixe),al_get_bitmap_height(peixe),1080,yMenu+80,p*al_get_bitmap_width(peixe),p*al_get_bitmap_height(peixe),0);
+    al_draw_scaled_bitmap(mapa,0,0,al_get_bitmap_width(mapa),al_get_bitmap_height(mapa),862,yMenu+80,p*al_get_bitmap_width(mapa),p*al_get_bitmap_height(mapa),0);
+    al_draw_scaled_bitmap(coco,0,0,al_get_bitmap_width(coco),al_get_bitmap_height(coco),96,yMenu+80,p*al_get_bitmap_width(coco),p*al_get_bitmap_height(coco),0);
+    al_draw_scaled_bitmap(espinha,0,0,al_get_bitmap_width(espinha),al_get_bitmap_height(espinha),971,yMenu+80,p*al_get_bitmap_width(espinha),p*al_get_bitmap_height(espinha),0);
+    al_draw_scaled_bitmap(galhocomum,0,0,al_get_bitmap_width(galhocomum),al_get_bitmap_height(galhocomum),206,yMenu+80,p*al_get_bitmap_width(galhocomum),p*al_get_bitmap_height(galhocomum),0);
+    al_draw_scaled_bitmap(galhofino,0,0,al_get_bitmap_width(galhofino),al_get_bitmap_height(galhofino),316,yMenu+80,p*al_get_bitmap_width(galhofino),p*al_get_bitmap_height(galhofino),0);
+    al_draw_scaled_bitmap(galhorigido,0,0,al_get_bitmap_width(galhorigido),al_get_bitmap_height(galhorigido),426,yMenu+80,p*al_get_bitmap_width(galhorigido),p*al_get_bitmap_height(galhorigido),0);
+    al_draw_scaled_bitmap(galhoseco,0,0,al_get_bitmap_width(galhoseco),al_get_bitmap_height(galhoseco),534,yMenu+80,p*al_get_bitmap_width(galhoseco),p*al_get_bitmap_height(galhoseco),0);
+    al_draw_scaled_bitmap(lanca,0,0,al_get_bitmap_width(lanca),al_get_bitmap_height(lanca),643,yMenu+80,p*al_get_bitmap_width(lanca),p*al_get_bitmap_height(lanca),0);
+    al_draw_scaled_bitmap(machado,0,0,al_get_bitmap_width(machado),al_get_bitmap_height(machado),752,yMenu+80,p*al_get_bitmap_width(machado),p*al_get_bitmap_height(machado),0);
+
+
 
 
     //if(yMenu <512 && yMenu >670)
